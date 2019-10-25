@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[vmware+centos7+bt搭建本地php开发环境]]></title>
-    <url>%2F2019%2F09%2F24%2Fvmware%2Bcentos7%2Bbt%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%2F</url>
-    <content type="text"><![CDATA[安装vmware安装centos7，配置共享目录安装vmtools12345678yum -y install perl gcc gcc-c++ make cmake kernel kernel-headers kernel-devel net-tools # 安装依赖包mkdir -p /mnt/cdrom # 创建CD-ROM挂载目录mount -t auto /dev/cdrom /mnt/cdrom # 将CD-ROM挂载到指定目录cp /mnt/cdrom/VMwareTools-10.0.5-3228253.tar.gz /home # 拷贝安装包到home目录umount /dev/cdrom # 解除挂载tar -zxvf VMwareTools-10.0.5-3228253.tar.gz # 解压安装包cd vmware-tools-distrib/ # 进入安装包目录./vmware-install.pl # 安装 配置目录映射，实现虚拟机与客户机文件同步123456yum install open-vm-tools open-vm-tools-desktop # 安装工具vmware-hgfsclient # 查看共享的目录vmhgfs-fuse .host:/ /mnt/hgfs # 挂载目录vi /etc/fstab # 开机自动挂载.host:/ /mnt/hgfs fuse.vmhgfs-fuse allow_other,defaults 0 0mount -a # 测试配置是否正确 安装宝塔面板1yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh]]></content>
+    <title>vmware+centos7+bt搭建本地php开发环境</title>
+    <url>/2019/09/24/vmware+centos7+bt%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h2 id="安装vmware"><a href="#安装vmware" class="headerlink" title="安装vmware"></a>安装vmware</h2><h2 id="安装centos7，配置共享目录"><a href="#安装centos7，配置共享目录" class="headerlink" title="安装centos7，配置共享目录"></a>安装centos7，配置共享目录</h2><h2 id="安装vmtools"><a href="#安装vmtools" class="headerlink" title="安装vmtools"></a>安装vmtools</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl gcc gcc-c++ make cmake kernel kernel-headers kernel-devel net-tools  <span class="comment"># 安装依赖包</span></span><br><span class="line">mkdir -p /mnt/cdrom                                                                      <span class="comment"># 创建CD-ROM挂载目录</span></span><br><span class="line">mount -t auto /dev/cdrom /mnt/cdrom                                                      <span class="comment"># 将CD-ROM挂载到指定目录</span></span><br><span class="line">cp /mnt/cdrom/VMwareTools-10.0.5-3228253.tar.gz /home                                    <span class="comment"># 拷贝安装包到home目录</span></span><br><span class="line">umount /dev/cdrom                                                                        <span class="comment"># 解除挂载</span></span><br><span class="line">tar -zxvf VMwareTools-10.0.5-3228253.tar.gz                                              <span class="comment"># 解压安装包</span></span><br><span class="line"><span class="built_in">cd</span> vmware-tools-distrib/                                                                 <span class="comment"># 进入安装包目录</span></span><br><span class="line">./vmware-install.pl                                                                      <span class="comment"># 安装</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置目录映射，实现虚拟机与客户机文件同步"><a href="#配置目录映射，实现虚拟机与客户机文件同步" class="headerlink" title="配置目录映射，实现虚拟机与客户机文件同步"></a>配置目录映射，实现虚拟机与客户机文件同步</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install open-vm-tools open-vm-tools-desktop                                          <span class="comment"># 安装工具</span></span><br><span class="line">vmware-hgfsclient                                                                        <span class="comment"># 查看共享的目录</span></span><br><span class="line">vmhgfs-fuse .host:/ /mnt/hgfs                                                            <span class="comment"># 挂载目录</span></span><br><span class="line">vi /etc/fstab                                                                            <span class="comment"># 开机自动挂载</span></span><br><span class="line">.host:/ /mnt/hgfs fuse.vmhgfs-fuse allow_other,defaults 0 0</span><br><span class="line">mount -a                                                                                 <span class="comment"># 测试配置是否正确</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装宝塔面板"><a href="#安装宝塔面板" class="headerlink" title="安装宝塔面板"></a>安装宝塔面板</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>vmware</category>
       </categories>
@@ -12,17 +16,25 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[shell备份mysql]]></title>
-    <url>%2F2019%2F06%2F01%2Fshell%E5%A4%87%E4%BB%BDmysql%2F</url>
-    <content type="text"><![CDATA[新建shell脚本1234567891011121314#!/bin/bashDB_USER="root" # mysql用户名DB_PASS="root" # mysql密码DB_HOST="127.0.0.1" # mysql主机地址DB_PORT="3306" # mysql端口DB_NAME="test" # mysql需要备份的数据库名称BACK_DIR="/home/backup/mysql" # 备份文件存放的位置BACK_FILE=$&#123;DB_NAME&#125;_`date +%Y%m%d`.sql # 备份文件名称BIN_DIR="/usr/bin"# 备份$&#123;BIN_DIR&#125;/mysqldump --opt -u$&#123;DB_USER&#125; -p$&#123;DB_PASS&#125; -h$&#123;DB_HOST&#125; -P$&#123;DB_PORT&#125; $&#123;DB_NAME&#125; &gt; $&#123;BACK_DIR&#125;/$&#123;BACK_FILE&#125;# 删除30天前的备份OLD_BACK_FILE=$&#123;BACK_DIR&#125;/$&#123;DB_NAME&#125;_`date -d "30 days ago" +%Y%m%d`.sqlrm -rf $&#123;OLD_FILE&#125; shell脚本可执行权限1chmod +x mysql.sh crontab定时任务执行脚本100 01 * * * /home/backup/mysql.sh # 每天凌晨1点备份 crontab基本格式12345* * * * * command分 时 日 月 周 命令05 * * * * command # 每5分钟执行30 00 * * * command # 每天凌晨0点30分钟执行]]></content>
+    <title>shell备份mysql</title>
+    <url>/2019/06/01/shell%E5%A4%87%E4%BB%BDmysql/</url>
+    <content><![CDATA[<h2 id="新建shell脚本"><a href="#新建shell脚本" class="headerlink" title="新建shell脚本"></a>新建shell脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">DB_USER=<span class="string">"root"</span>                             <span class="comment"># mysql用户名</span></span><br><span class="line">DB_PASS=<span class="string">"root"</span>                             <span class="comment"># mysql密码</span></span><br><span class="line">DB_HOST=<span class="string">"127.0.0.1"</span>                        <span class="comment"># mysql主机地址</span></span><br><span class="line">DB_PORT=<span class="string">"3306"</span>                             <span class="comment"># mysql端口</span></span><br><span class="line">DB_NAME=<span class="string">"test"</span>                             <span class="comment"># mysql需要备份的数据库名称</span></span><br><span class="line">BACK_DIR=<span class="string">"/home/backup/mysql"</span>              <span class="comment"># 备份文件存放的位置</span></span><br><span class="line">BACK_FILE=<span class="variable">$&#123;DB_NAME&#125;</span>_`date +%Y%m%d`.sql    <span class="comment"># 备份文件名称</span></span><br><span class="line">BIN_DIR=<span class="string">"/usr/bin"</span></span><br><span class="line"><span class="comment"># 备份</span></span><br><span class="line"><span class="variable">$&#123;BIN_DIR&#125;</span>/mysqldump --opt -u<span class="variable">$&#123;DB_USER&#125;</span> -p<span class="variable">$&#123;DB_PASS&#125;</span> -h<span class="variable">$&#123;DB_HOST&#125;</span> -P<span class="variable">$&#123;DB_PORT&#125;</span> <span class="variable">$&#123;DB_NAME&#125;</span> &gt; <span class="variable">$&#123;BACK_DIR&#125;</span>/<span class="variable">$&#123;BACK_FILE&#125;</span></span><br><span class="line"><span class="comment"># 删除30天前的备份</span></span><br><span class="line">OLD_BACK_FILE=<span class="variable">$&#123;BACK_DIR&#125;</span>/<span class="variable">$&#123;DB_NAME&#125;</span>_`date -d <span class="string">"30 days ago"</span> +%Y%m%d`.sql</span><br><span class="line">rm -rf <span class="variable">$&#123;OLD_FILE&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="shell脚本可执行权限"><a href="#shell脚本可执行权限" class="headerlink" title="shell脚本可执行权限"></a>shell脚本可执行权限</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod +x mysql.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="crontab定时任务执行脚本"><a href="#crontab定时任务执行脚本" class="headerlink" title="crontab定时任务执行脚本"></a>crontab定时任务执行脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 01 * * * /home/backup/mysql.sh     <span class="comment"># 每天凌晨1点备份</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="crontab基本格式"><a href="#crontab基本格式" class="headerlink" title="crontab基本格式"></a>crontab基本格式</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*    *    *    *    *    <span class="built_in">command</span></span><br><span class="line">分   时   日   月   周    命令</span><br><span class="line"></span><br><span class="line">05 * * * * <span class="built_in">command</span>     <span class="comment"># 每5分钟执行</span></span><br><span class="line">30 00 * * * <span class="built_in">command</span>    <span class="comment"># 每天凌晨0点30分钟执行</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[docker基本命令]]></title>
-    <url>%2F2019%2F05%2F17%2Fdocker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[镜像常用命令12345docker images # 查看所有镜像docker rmi $(docker images -q) # 删除所有镜像docker rmi &lt;image id&gt; # 删除指定镜像docker pull centos:7 # 拉取镜像docker tag &lt;image id&gt; 仓库:标签 # 镜像重命名 容器常用命令123456789docker ps # 查看正在运行的容器docker ps -a # 查看所有容器docker kill $(docker ps -a -q) # 杀死所有正在运行的容器docker rm $(docker ps -a -q) # 删除所有已经停止的容器docker run -it -p 22:22 -p 80:80 -p 443:443 -p 3306:3306 &lt;image id&gt; /bin/bash # 创建容器docker stop &lt;container id&gt; # 停止容器docker start &lt;container id&gt; # 启动容器docker exec -it &lt;container id&gt; /bin/bash # 进入容器docker commit &lt;container id&gt; &lt;image name&gt; # 将容器打包成镜像]]></content>
+    <title>docker基本命令</title>
+    <url>/2019/05/17/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="镜像常用命令"><a href="#镜像常用命令" class="headerlink" title="镜像常用命令"></a>镜像常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images                                                                         <span class="comment"># 查看所有镜像</span></span><br><span class="line">docker rmi $(docker images -q)                                                        <span class="comment"># 删除所有镜像</span></span><br><span class="line">docker rmi &lt;image id&gt;                                                                 <span class="comment"># 删除指定镜像</span></span><br><span class="line">docker pull centos:7                                                                  <span class="comment"># 拉取镜像</span></span><br><span class="line">docker tag &lt;image id&gt; 仓库:标签                                                        <span class="comment"># 镜像重命名</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps                                                                             <span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps -a                                                                          <span class="comment"># 查看所有容器</span></span><br><span class="line">docker <span class="built_in">kill</span> $(docker ps -a -q)                                                        <span class="comment"># 杀死所有正在运行的容器</span></span><br><span class="line">docker rm $(docker ps -a -q)                                                          <span class="comment"># 删除所有已经停止的容器</span></span><br><span class="line">docker run -it -p 22:22 -p 80:80 -p 443:443 -p 3306:3306 &lt;image id&gt; /bin/bash         <span class="comment"># 创建容器</span></span><br><span class="line">docker stop &lt;container id&gt;                                                            <span class="comment"># 停止容器</span></span><br><span class="line">docker start &lt;container id&gt;                                                           <span class="comment"># 启动容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;container id&gt; /bin/bash                                              <span class="comment"># 进入容器</span></span><br><span class="line">docker commit &lt;container id&gt; &lt;image name&gt;                                             <span class="comment"># 将容器打包成镜像</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>docker</category>
       </categories>
@@ -31,9 +43,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[rem自适应]]></title>
-    <url>%2F2019%2F05%2F10%2Frem%E8%87%AA%E9%80%82%E5%BA%94%2F</url>
-    <content type="text"><![CDATA[自适应js代码123456789101112131415161718192021222324252627282930313233!function (window) &#123; /* 设计图文档宽度 */ var docWidth = 750; var doc = window.document, docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'; var recalc = (function refreshRem() &#123; var clientWidth = docEl.getBoundingClientRect().width; /* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */ docEl.style.fontSize = Math.max(Math.min(20 * (clientWidth / docWidth), 11.2), 8.55) * 5 + 'px'; return refreshRem; &#125;)(); /* 添加倍屏标识，安卓为1 */ docEl.setAttribute('data-dpr', window.navigator.appVersion.match(/iphone/gi) ? window.devicePixelRatio : 1); if (/iP(hone|od|ad)/.test(window.navigator.userAgent)) &#123; /* 添加IOS标识 */ doc.documentElement.classList.add('ios'); /* IOS8以上给html添加hairline样式，以便特殊处理 */ if (parseInt(window.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1], 10) &gt;= 8) doc.documentElement.classList.add('hairline'); &#125; if (!doc.addEventListener) return; window.addEventListener(resizeEvt, recalc, false); doc.addEventListener('DOMContentLoaded', recalc, false);&#125;(window);]]></content>
+    <title>rem自适应</title>
+    <url>/2019/05/10/rem%E8%87%AA%E9%80%82%E5%BA%94/</url>
+    <content><![CDATA[<h2 id="自适应js代码"><a href="#自适应js代码" class="headerlink" title="自适应js代码"></a>自适应js代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params">window</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* 设计图文档宽度 */</span></span><br><span class="line">  <span class="keyword">var</span> docWidth = <span class="number">750</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> doc = <span class="built_in">window</span>.document,</span><br><span class="line">    docEl = doc.documentElement,</span><br><span class="line">    resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> recalc = (<span class="function"><span class="keyword">function</span> <span class="title">refreshRem</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> clientWidth = docEl.getBoundingClientRect().width;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */</span></span><br><span class="line">    docEl.style.fontSize = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(<span class="number">20</span> * (clientWidth / docWidth), <span class="number">11.2</span>), <span class="number">8.55</span>) * <span class="number">5</span> + <span class="string">'px'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> refreshRem;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 添加倍屏标识，安卓为1 */</span></span><br><span class="line">  docEl.setAttribute(<span class="string">'data-dpr'</span>, <span class="built_in">window</span>.navigator.appVersion.match(<span class="regexp">/iphone/gi</span>) ? <span class="built_in">window</span>.devicePixelRatio : <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="regexp">/iP(hone|od|ad)/</span>.test(<span class="built_in">window</span>.navigator.userAgent)) &#123;</span><br><span class="line">    <span class="comment">/* 添加IOS标识 */</span></span><br><span class="line">    doc.documentElement.classList.add(<span class="string">'ios'</span>);</span><br><span class="line">    <span class="comment">/* IOS8以上给html添加hairline样式，以便特殊处理 */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">parseInt</span>(<span class="built_in">window</span>.navigator.appVersion.match(<span class="regexp">/OS (\d+)_(\d+)_?(\d+)?/</span>)[<span class="number">1</span>], <span class="number">10</span>) &gt;= <span class="number">8</span>)</span><br><span class="line">      doc.documentElement.classList.add(<span class="string">'hairline'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!doc.addEventListener) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">  doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">&#125;(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -42,9 +54,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[解决iframe出现滚动条]]></title>
-    <url>%2F2019%2F05%2F08%2F%E8%A7%A3%E5%86%B3iframe%E5%87%BA%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%9D%A1%2F</url>
-    <content type="text"><![CDATA[需求是这样的，iframe在一个div中，并且iframe高度与div一样，所以设置了iframe高度是100%，结果div出现了滚动条，在排除了padding、margin的因素外，还是有滚动条。按理说，只有iframe有滚动条，父div不应该有滚动条。 一般搜索后，找到了原因，简单来说，iframe=inline frame它是一个内联元素，默认是跟baseline对齐的，iframe后边有个看不见、摸不着的行内空白节点，空白节点占据着高度，iframe与空白节点的基线对齐，导致了div被撑开，从而出现滚动条。 找到原因了，解决方案也就简单了。 第一种，设置iframe的vertical-align:top，设置父div的font-size:0，从而影响空白节点的line-height是0，从而不占据高度 第二种，改变iframe的内联元素性质，改为块级元素，display:block]]></content>
+    <title>解决iframe出现滚动条</title>
+    <url>/2019/05/08/%E8%A7%A3%E5%86%B3iframe%E5%87%BA%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%9D%A1/</url>
+    <content><![CDATA[<ul>
+<li><p>需求是这样的，iframe在一个div中，并且iframe高度与div一样，所以设置了iframe高度是100%，结果div出现了滚动条，在排除了padding、margin的因素外，还是有滚动条。按理说，只有iframe有滚动条，父div不应该有滚动条。  </p>
+</li>
+<li><p>一般搜索后，找到了原因，简单来说，iframe=inline frame它是一个内联元素，默认是跟baseline对齐的，iframe后边有个看不见、摸不着的行内空白节点，空白节点占据着高度，iframe与空白节点的基线对齐，导致了div被撑开，从而出现滚动条。</p>
+</li>
+<li><p>找到原因了，解决方案也就简单了。</p>
+<ul>
+<li>第一种，设置iframe的vertical-align:top，设置父div的font-size:0，从而影响空白节点的line-height是0，从而不占据高度</li>
+<li>第二种，改变iframe的内联元素性质，改为块级元素，display:block</li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>css</category>
       </categories>
@@ -53,9 +77,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[composer常用命令]]></title>
-    <url>%2F2019%2F05%2F04%2Fcomposer%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[检查更新1composer selfupdate 切换中国镜像123composer config -g repo.packagist composer https://packagist.phpcomposer.com # phpcomposer镜像 已停用composer config -g repo.packagist composer https://packagist.laravel-china.org # Laravel China镜像 已停用composer config -g repo.packagist composer https://mirrors.aliyun.com/composer # 阿里云Composer全量镜像 建议使用 解除镜像并恢复到packagist官方源1composer config -g --unset repos.packagist 仅更新单个库1composer update foo/bar 全局安装1composer global require foo/bar 全局更新1composer global update composer autoload 自动加载性能优化1composer dump-autoload -o]]></content>
+    <title>composer常用命令</title>
+    <url>/2019/05/04/composer%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="检查更新"><a href="#检查更新" class="headerlink" title="检查更新"></a>检查更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer selfupdate</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换中国镜像"><a href="#切换中国镜像" class="headerlink" title="切换中国镜像"></a>切换中国镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com    <span class="comment"># phpcomposer镜像         已停用</span></span><br><span class="line">composer config -g repo.packagist composer https://packagist.laravel-china.org  <span class="comment"># Laravel China镜像       已停用</span></span><br><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer  <span class="comment"># 阿里云Composer全量镜像   建议使用</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解除镜像并恢复到packagist官方源"><a href="#解除镜像并恢复到packagist官方源" class="headerlink" title="解除镜像并恢复到packagist官方源"></a>解除镜像并恢复到packagist官方源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
+
+<h2 id="仅更新单个库"><a href="#仅更新单个库" class="headerlink" title="仅更新单个库"></a>仅更新单个库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer update foo/bar</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer global require foo/bar</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局更新"><a href="#全局更新" class="headerlink" title="全局更新"></a>全局更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer global update</span><br></pre></td></tr></table></figure>
+
+<h2 id="composer-autoload-自动加载性能优化"><a href="#composer-autoload-自动加载性能优化" class="headerlink" title="composer autoload 自动加载性能优化"></a>composer autoload 自动加载性能优化</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer dump-autoload -o</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>composer</category>
       </categories>
@@ -65,9 +101,29 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[MySQL5.7默认打开ONLY_FULL_GROUP_BY模式问题与解决方案]]></title>
-    <url>%2F2019%2F04%2F17%2Fmysql5.7%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80ONLY_FULL_GROUP_BY%E6%A8%A1%E5%BC%8F%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
-    <content type="text"><![CDATA[解决方案一 查看当前数据库的sql_mode属性值 1select @@sql_mode 去掉ONLY_FULL_GROUP_BY, 重新赋值 1set sql_mode = (select replace(@@sql_mode, 'ONLY_FULL_GROUP_BY', '')); 但是这种方式设置的只是当前会话中的sql_model, 服务器重启后会失效。设置永久生效模式需修改mysql配置文件 解决方案二 MySQL有any_value(field)函数, 他主要的作用就是抑制ONLY_FULL_GROUP_BY值被拒绝 官方有介绍, 地址：https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_any-value 我们可以把select语句中查询的属性(除聚合函数所需的参数外), 全部放入any_value(field)函数中 这样sql语句不管是在ONLY_FULL_GROUP_BY模式关闭状态还是在开启模式都可以正常执行, 不被mysql拒绝 例如: 1234567SELECT `name`, any_value ( `sex` )FROM `test_table`GROUP BY `name`]]></content>
+    <title>MySQL5.7默认打开ONLY_FULL_GROUP_BY模式问题与解决方案</title>
+    <url>/2019/04/17/mysql5.7%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80ONLY_FULL_GROUP_BY%E6%A8%A1%E5%BC%8F%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h2><ul>
+<li>查看当前数据库的sql_mode属性值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> @@sql_mode</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>去掉ONLY_FULL_GROUP_BY, 重新赋值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span> sql_mode = (<span class="keyword">select</span> <span class="keyword">replace</span>(@@sql_mode, <span class="string">'ONLY_FULL_GROUP_BY'</span>, <span class="string">''</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>但是这种方式设置的只是当前会话中的sql_model, 服务器重启后会失效。设置永久生效模式需修改mysql配置文件</li>
+</ul>
+<h2 id="解决方案二"><a href="#解决方案二" class="headerlink" title="解决方案二"></a>解决方案二</h2><ul>
+<li>MySQL有any_value(field)函数, 他主要的作用就是抑制ONLY_FULL_GROUP_BY值被拒绝</li>
+<li>官方有介绍, 地址：<a href="https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_any-value" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_any-value</a></li>
+<li>我们可以把select语句中查询的属性(除聚合函数所需的参数外), 全部放入any_value(field)函数中</li>
+<li>这样sql语句不管是在ONLY_FULL_GROUP_BY模式关闭状态还是在开启模式都可以正常执行, 不被mysql拒绝</li>
+<li>例如:</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="string">`name`</span>,</span><br><span class="line">  any_value ( <span class="string">`sex`</span> )</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  <span class="string">`test_table`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">  <span class="string">`name`</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>mysql</category>
       </categories>
@@ -76,9 +132,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[es6转es5]]></title>
-    <url>%2F2019%2F04%2F15%2Fes6%E8%BD%ACes5%2F</url>
-    <content type="text"><![CDATA[新建.babelrc123456&#123; "presets": [ "es2015" ], "plugins": []&#125; 新建package.json123456789&#123; "devDependencies": &#123; "babel-cli": "^6.26.0", "babel-preset-es2015": "^6.24.1" &#125;, "scripts": &#123; "build": "babel src -d dist" &#125;&#125; 将src目录的js代码转换成es20151cnpm run build]]></content>
+    <title>es6转es5</title>
+    <url>/2019/04/15/es6%E8%BD%ACes5/</url>
+    <content><![CDATA[<h2 id="新建-babelrc"><a href="#新建-babelrc" class="headerlink" title="新建.babelrc"></a>新建.babelrc</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>: [</span><br><span class="line">        <span class="string">"es2015"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"plugins"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建package-json"><a href="#新建package-json" class="headerlink" title="新建package.json"></a>新建package.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"babel-cli"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line">    <span class="attr">"babel-preset-es2015"</span>: <span class="string">"^6.24.1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"babel src -d dist"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将src目录的js代码转换成es2015"><a href="#将src目录的js代码转换成es2015" class="headerlink" title="将src目录的js代码转换成es2015"></a>将src目录的js代码转换成es2015</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm run build</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -87,9 +147,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[js异步请求]]></title>
-    <url>%2F2019%2F04%2F15%2Fjs%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%2F</url>
-    <content type="text"><![CDATA[$.ajax异步请求demo123456789101112131415161718192021$(function() &#123; $.ajax(&#123; url: "http://localhost:3000/api/login", method: "POST", dataType: "json", data: &#123; "user": "admin", "password": "123456", &#125;, headers: &#123; "token": "123456789", "sign": "11", &#125;, beforeSend: function (jqXHR, settings) &#123;&#125; &#125;) .done(function (data, textStatus, jqXHR) &#123;&#125;) .fail(function (jqXHR, textStatus, errorThrown) &#123;&#125;) .always(function (data, textStatus, jqXHR) &#123; // data|jqXHR, textStatus, jqXHR|errorThrown &#125;);&#125;); axios异步请求12345678910111213141516171819202122232425262728// 添加请求拦截器axios.interceptors.request.use(function (config) &#123; config.headers["platform"] = 1; config.headers["version"] = "1.0.0"; config.headers["token"] = ""; return config;&#125;, function (error) &#123; return Promise.reject(error);&#125;);// 添加响应拦截器axios.interceptors.response.use(function (response) &#123; return response.data;&#125;, function (error) &#123; return Promise.reject(error);&#125;);// post请求axios.post("http://localhost:3000/api/login", &#123; user: "admin", password: "123456",&#125;) .then(function (response) &#123; console.log(response); &#125;) .catch(function (error) &#123; console.log(error); &#125;);]]></content>
+    <title>js异步请求</title>
+    <url>/2019/04/15/js%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/</url>
+    <content><![CDATA[<h2 id="ajax异步请求demo"><a href="#ajax异步请求demo" class="headerlink" title="$.ajax异步请求demo"></a>$.ajax异步请求demo</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: <span class="string">"http://localhost:3000/api/login"</span>,</span><br><span class="line">    method: <span class="string">"POST"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">      <span class="string">"user"</span>: <span class="string">"admin"</span>,</span><br><span class="line">      <span class="string">"password"</span>: <span class="string">"123456"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">"token"</span>: <span class="string">"123456789"</span>,</span><br><span class="line">      <span class="string">"sign"</span>: <span class="string">"11"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeSend: <span class="function"><span class="keyword">function</span> (<span class="params">jqXHR, settings</span>) </span>&#123;&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .done(<span class="function"><span class="keyword">function</span> (<span class="params">data, textStatus, jqXHR</span>) </span>&#123;&#125;)</span><br><span class="line">  .fail(<span class="function"><span class="keyword">function</span> (<span class="params">jqXHR, textStatus, errorThrown</span>) </span>&#123;&#125;)</span><br><span class="line">  .always(<span class="function"><span class="keyword">function</span> (<span class="params">data, textStatus, jqXHR</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// data|jqXHR, textStatus, jqXHR|errorThrown</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="axios异步请求"><a href="#axios异步请求" class="headerlink" title="axios异步请求"></a>axios异步请求</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加请求拦截器</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">  config.headers[<span class="string">"platform"</span>] = <span class="number">1</span>;</span><br><span class="line">  config.headers[<span class="string">"version"</span>] = <span class="string">"1.0.0"</span>;</span><br><span class="line">  config.headers[<span class="string">"token"</span>] = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加响应拦截器</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> response.data;</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// post请求</span></span><br><span class="line">axios.post(<span class="string">"http://localhost:3000/api/login"</span>, &#123;</span><br><span class="line">  user: <span class="string">"admin"</span>,</span><br><span class="line">  password: <span class="string">"123456"</span>,</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -100,9 +162,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[node配置反向代理]]></title>
-    <url>%2F2019%2F04%2F12%2Fnode%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%2F</url>
-    <content type="text"><![CDATA[安装依赖项12cnpm install expresscnpm install http-proxy-middleware 新建proxy.js1234567891011121314151617181920212223var express = require('express');var app = express();var proxy = require('http-proxy-middleware');var port = '3000';var proxyTarget = 'https://www.xxx.com';app.use('/', function (request, response) &#123; response.send('Hello World');&#125;);app.use('/api/*', proxy(&#123; target: proxyTarget, changeOrigin: true, ws: true, pathRewrite: &#123; '^/api': '' &#125;&#125;));app.listen(port, function () &#123; console.log("server is listen at http://localhost:%s", port);&#125;); 启动服务1node proxy.js]]></content>
+    <title>node配置反向代理</title>
+    <url>/2019/04/12/node%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cnpm install express</span><br><span class="line">cnpm install http-proxy-middleware</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建proxy-js"><a href="#新建proxy-js" class="headerlink" title="新建proxy.js"></a>新建proxy.js</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> proxy = <span class="built_in">require</span>(<span class="string">'http-proxy-middleware'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> port = <span class="string">'3000'</span>;</span><br><span class="line"><span class="keyword">var</span> proxyTarget = <span class="string">'https://www.xxx.com'</span>;</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.send(<span class="string">'Hello World'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/api/*'</span>, proxy(&#123;</span><br><span class="line">  target: proxyTarget,</span><br><span class="line">  changeOrigin: <span class="literal">true</span>,</span><br><span class="line">  ws: <span class="literal">true</span>,</span><br><span class="line">  pathRewrite: &#123;</span><br><span class="line">    <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"server is listen at http://localhost:%s"</span>, port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">node proxy.js</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>node.js</category>
       </categories>
@@ -111,9 +177,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[centos7防火墙设置]]></title>
-    <url>%2F2019%2F03%2F29%2Fcentos7%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[禁用/停止自带的firewalld服务1234567firewall-cmd --state # 查看默认防火墙状态，关闭后显示not running，开启后显示runningyum install -y firewalld # 安装firewalldsystemctl start firewalld.service # 开启防火墙systemctl stop firewalld.service # 关闭防火墙systemctl enable firewalld.service # 允许firewall开机启动systemctl disable firewalld.service # 禁止firewall开机启动# 如出现"Failed to start firewalld.service: Unit is masked"错误，执行"systemctl unmask firewalld.service" 安装iptable iptable-service1234service iptables status # 先检查是否安装了iptablesyum install -y iptables # 安装iptablesyum update iptables # 升级iptablesyum install iptables-services # 安装iptables-services 设置现有规则123456789101112131415iptables -L -n # 查看iptables现有规则iptables -P INPUT ACCEPT # 允许所有iptables -F # 清空所有默认规则iptables -X # 清空所有自定义规则iptables -Z # 所有计数器归0iptables -A INPUT -i lo -j ACCEPT # 允许来自于lo接口的数据包(本地访问)iptables -A INPUT -p tcp --dport 22 -j ACCEPT # 开放22端口(SSH)iptables -A INPUT -p tcp --dport 21 -j ACCEPT # 开放21端口(FTP)iptables -A INPUT -p tcp --dport 80 -j ACCEPT # 开放80端口(HTTP)iptables -A INPUT -p tcp --dport 443 -j ACCEPT # 开放443端口(HTTPS)iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT # 允许pingiptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT # 允许接受本机请求之后的返回数据RELATED,是为FTP设置的iptables -P INPUT DROP # 其他入站一律丢弃iptables -P OUTPUT ACCEPT # 所有出站一律允许iptables -P FORWARD DROP # 所有转发一律丢弃 其他规则设定123iptables -A INPUT -p tcp -s 45.96.174.68 -j ACCEPT # 如果要添加内网ip信任（接受其所有TCP请求）iptables -I INPUT -s ***.***.***.*** -j DROP # 要封停一个IP，使用下面这条命令：iptables -D INPUT -s ***.***.***.*** -j DROP # 要解封一个IP，使用下面这条命令: 保存规则设定1service iptables save # 保存上述规则 开启iptables服务12345systemctl disable iptables.service # 禁用iptables服务systemctl enable iptables.service # 注册iptables服务systemctl start iptables.service # 开启服务systemctl stop iptables.service # 停止服务systemctl status iptables.service # 查看状态 映射端口（如将mysql默认的3306端口映射成1306对外提供服务）123iptables -t mangle -I PREROUTING -p tcp --dport 1306 -j MARK --set-mark 883306iptables -t nat -I PREROUTING -p tcp --dport 1306 -j REDIRECT --to-ports 3306iptables -I INPUT -p tcp --dport 3306 -m mark --mark 883306 -j ACCEPT]]></content>
+    <title>centos7防火墙设置</title>
+    <url>/2019/03/29/centos7%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="禁用-停止自带的firewalld服务"><a href="#禁用-停止自带的firewalld服务" class="headerlink" title="禁用/停止自带的firewalld服务"></a>禁用/停止自带的firewalld服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --state                   <span class="comment"># 查看默认防火墙状态，关闭后显示not running，开启后显示running</span></span><br><span class="line">yum install -y firewalld               <span class="comment"># 安装firewalld</span></span><br><span class="line">systemctl start firewalld.service      <span class="comment"># 开启防火墙</span></span><br><span class="line">systemctl stop firewalld.service       <span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld.service     <span class="comment"># 允许firewall开机启动</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service    <span class="comment"># 禁止firewall开机启动</span></span><br><span class="line"><span class="comment"># 如出现"Failed to start firewalld.service: Unit is masked"错误，执行"systemctl unmask firewalld.service"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装iptable-iptable-service"><a href="#安装iptable-iptable-service" class="headerlink" title="安装iptable iptable-service"></a>安装iptable iptable-service</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service iptables status          <span class="comment"># 先检查是否安装了iptables</span></span><br><span class="line">yum install -y iptables          <span class="comment"># 安装iptables</span></span><br><span class="line">yum update iptables              <span class="comment"># 升级iptables</span></span><br><span class="line">yum install iptables-services    <span class="comment"># 安装iptables-services</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置现有规则"><a href="#设置现有规则" class="headerlink" title="设置现有规则"></a>设置现有规则</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -L -n                                                       <span class="comment"># 查看iptables现有规则</span></span><br><span class="line">iptables -P INPUT ACCEPT                                             <span class="comment"># 允许所有</span></span><br><span class="line">iptables -F                                                          <span class="comment"># 清空所有默认规则</span></span><br><span class="line">iptables -X                                                          <span class="comment"># 清空所有自定义规则</span></span><br><span class="line">iptables -Z                                                          <span class="comment"># 所有计数器归0</span></span><br><span class="line">iptables -A INPUT -i lo -j ACCEPT                                    <span class="comment"># 允许来自于lo接口的数据包(本地访问)</span></span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT                        <span class="comment"># 开放22端口(SSH)</span></span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT                        <span class="comment"># 开放21端口(FTP)</span></span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT                        <span class="comment"># 开放80端口(HTTP)</span></span><br><span class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT                       <span class="comment"># 开放443端口(HTTPS)</span></span><br><span class="line">iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT                    <span class="comment"># 允许ping</span></span><br><span class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT     <span class="comment"># 允许接受本机请求之后的返回数据RELATED,是为FTP设置的</span></span><br><span class="line">iptables -P INPUT DROP                                               <span class="comment"># 其他入站一律丢弃</span></span><br><span class="line">iptables -P OUTPUT ACCEPT                                            <span class="comment"># 所有出站一律允许</span></span><br><span class="line">iptables -P FORWARD DROP                                             <span class="comment"># 所有转发一律丢弃</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="其他规则设定"><a href="#其他规则设定" class="headerlink" title="其他规则设定"></a>其他规则设定</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -A INPUT -p tcp -s 45.96.174.68 -j ACCEPT    <span class="comment"># 如果要添加内网ip信任（接受其所有TCP请求）</span></span><br><span class="line">iptables -I INPUT -s ***.***.***.*** -j DROP          <span class="comment"># 要封停一个IP，使用下面这条命令：</span></span><br><span class="line">iptables -D INPUT -s ***.***.***.*** -j DROP          <span class="comment"># 要解封一个IP，使用下面这条命令:</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="保存规则设定"><a href="#保存规则设定" class="headerlink" title="保存规则设定"></a>保存规则设定</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service iptables save    <span class="comment"># 保存上述规则</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="开启iptables服务"><a href="#开启iptables服务" class="headerlink" title="开启iptables服务"></a>开启iptables服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> iptables.service   <span class="comment"># 禁用iptables服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> iptables.service    <span class="comment"># 注册iptables服务</span></span><br><span class="line">systemctl start iptables.service     <span class="comment"># 开启服务</span></span><br><span class="line">systemctl stop iptables.service      <span class="comment"># 停止服务</span></span><br><span class="line">systemctl status iptables.service    <span class="comment"># 查看状态</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="映射端口（如将mysql默认的3306端口映射成1306对外提供服务）"><a href="#映射端口（如将mysql默认的3306端口映射成1306对外提供服务）" class="headerlink" title="映射端口（如将mysql默认的3306端口映射成1306对外提供服务）"></a>映射端口（如将mysql默认的3306端口映射成1306对外提供服务）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t mangle -I PREROUTING -p tcp --dport 1306 -j MARK --<span class="built_in">set</span>-mark 883306</span><br><span class="line">iptables -t nat -I PREROUTING -p tcp --dport 1306 -j REDIRECT --to-ports 3306</span><br><span class="line">iptables -I INPUT -p tcp --dport 3306 -m mark --mark 883306 -j ACCEPT</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>centos7防火墙</category>
       </categories>
@@ -122,9 +200,22 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tar命令详解]]></title>
-    <url>%2F2019%2F03%2F19%2Ftar%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[选项说明 tar [主选项+辅选项] 文件或目录。 主选项是必要的，它告诉tar要做什么事情。 辅选项是可选的。 主选项12345-x 从档案文件中释放文件。-c 创建新的档案文件。如果用户想备份一个目录或是一些文件，就要选择这个选项。-r 把要存档的文件追加到档案文件的末尾。例如用户已经做好备份文件，又发现还有一个目录或是一些文件忘 记备份了，这时可以使用该选项，将忘记的目录或文件追加到备份文件中。-t 列出档案文件的内容，查看已经备份了哪些文件。-u 更新文件。就是说，用新增的文件取代原备份文件，如果在备份文件中找不到要更新的文件，则把它追加到备份文件的最后。 辅选项123456789-j 代表使用‘bzip2’程序进行文件的压缩tar.bz2-z 用gzip来压缩/解压缩文件，加上该选项后可以将档案文件进行压缩，但还原时也一定要使用该选项进行解压缩tar.gz-v 详细报告tar处理的文件信息。如无此选项，tar不报告文件信息。-b 该选项是为磁带机设定的，其后跟一数字，用来说明区块的大小，系统预设值为20（20×512 bytes）。-f 使用档案文件或设备，这个选项通常是必选的。-k 保存已经存在的文件。例如把某个文件还原，在还原的过程中遇到相同的文件，不会进行覆盖。-m 在还原文件时，把所有文件的修改时间设定为。-M 创建多卷的档案文件，以便在几个磁盘中存放。-w 每一步都要求确认。 tar包的创建123tar -cvf file.tar file1 file2tar -zcvf file.tar.gz file1 file2tar -jcvf file.tar.bz2 file1 file2 tar包的查看123tar -tvf file.tartar -ztvf file.tar.gztar -jtvf file.tar.bz2 tar包的释放123tar -xvf file.tartar -zxvf file.tar.gztar -jxvf file.tar.bz2]]></content>
+    <title>tar命令详解</title>
+    <url>/2019/03/19/tar%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h2><ul>
+<li>tar  [主选项+辅选项]  文件或目录。</li>
+<li>主选项是必要的，它告诉tar要做什么事情。</li>
+<li>辅选项是可选的。</li>
+</ul>
+<h2 id="主选项"><a href="#主选项" class="headerlink" title="主选项"></a>主选项</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-x 从档案文件中释放文件。</span><br><span class="line">-c 创建新的档案文件。如果用户想备份一个目录或是一些文件，就要选择这个选项。</span><br><span class="line">-r 把要存档的文件追加到档案文件的末尾。例如用户已经做好备份文件，又发现还有一个目录或是一些文件忘 记备份了，这时可以使用该选项，将忘记的目录或文件追加到备份文件中。</span><br><span class="line">-t 列出档案文件的内容，查看已经备份了哪些文件。</span><br><span class="line">-u 更新文件。就是说，用新增的文件取代原备份文件，如果在备份文件中找不到要更新的文件，则把它追加到备份文件的最后。</span><br></pre></td></tr></table></figure>
+
+<h2 id="辅选项"><a href="#辅选项" class="headerlink" title="辅选项"></a>辅选项</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-j 代表使用‘bzip2’程序进行文件的压缩tar.bz2</span><br><span class="line">-z 用gzip来压缩/解压缩文件，加上该选项后可以将档案文件进行压缩，但还原时也一定要使用该选项进行解压缩tar.gz</span><br><span class="line">-v 详细报告tar处理的文件信息。如无此选项，tar不报告文件信息。</span><br><span class="line">-b 该选项是为磁带机设定的，其后跟一数字，用来说明区块的大小，系统预设值为20（20×512 bytes）。</span><br><span class="line">-f 使用档案文件或设备，这个选项通常是必选的。</span><br><span class="line">-k 保存已经存在的文件。例如把某个文件还原，在还原的过程中遇到相同的文件，不会进行覆盖。</span><br><span class="line">-m 在还原文件时，把所有文件的修改时间设定为。</span><br><span class="line">-M 创建多卷的档案文件，以便在几个磁盘中存放。</span><br><span class="line">-w 每一步都要求确认。</span><br></pre></td></tr></table></figure>
+
+<h2 id="tar包的创建"><a href="#tar包的创建" class="headerlink" title="tar包的创建"></a>tar包的创建</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -cvf file.tar file1 file2</span><br><span class="line">tar -zcvf file.tar.gz file1 file2</span><br><span class="line">tar -jcvf file.tar.bz2 file1 file2</span><br></pre></td></tr></table></figure>
+
+<h2 id="tar包的查看"><a href="#tar包的查看" class="headerlink" title="tar包的查看"></a>tar包的查看</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -tvf file.tar</span><br><span class="line">tar -ztvf file.tar.gz</span><br><span class="line">tar -jtvf file.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h2 id="tar包的释放"><a href="#tar包的释放" class="headerlink" title="tar包的释放"></a>tar包的释放</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf file.tar</span><br><span class="line">tar -zxvf file.tar.gz</span><br><span class="line">tar -jxvf file.tar.bz2</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -133,9 +224,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[git常用命令]]></title>
-    <url>%2F2019%2F03%2F19%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[忽略指定文件的改动12345678# 忽略 .htaccess 文件的改动git update-index --assume-unchanged .htaccess# 取消忽略git update-index --no-assume-unchanged .htaccess# 找出被忽略的文件git ls-files -v | grep '^h\ ' 配置换行符自动替换1git config --global core.autocrlf false]]></content>
+    <title>git常用命令</title>
+    <url>/2019/03/19/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="忽略指定文件的改动"><a href="#忽略指定文件的改动" class="headerlink" title="忽略指定文件的改动"></a>忽略指定文件的改动</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 忽略 .htaccess 文件的改动</span></span><br><span class="line">git update-index --assume-unchanged .htaccess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消忽略</span></span><br><span class="line">git update-index --no-assume-unchanged .htaccess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出被忽略的文件</span></span><br><span class="line">git ls-files -v | grep <span class="string">'^h\ '</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="配置换行符自动替换"><a href="#配置换行符自动替换" class="headerlink" title="配置换行符自动替换"></a>配置换行符自动替换</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>git</category>
       </categories>
@@ -144,9 +238,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[php-cs-fixer代码格式化]]></title>
-    <url>%2F2019%2F03%2F19%2Fphp-cs-fixer%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%2F</url>
-    <content type="text"><![CDATA[composer全局安装php-cs-fixer1composer global require friendsofphp/php-cs-fixer 新建.php_cs文件1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859&lt;?php$finder = PhpCsFixer\Finder::create() -&gt;in(__DIR__) -&gt;exclude('public/static') -&gt;exclude('public/upload') -&gt;exclude('vendor');$rules = [ '@PSR1' =&gt; true, '@PSR2' =&gt; true, '@PhpCsFixer' =&gt; true, // 数组定义语法短括号 'array_syntax' =&gt; [ 'syntax' =&gt; 'short', ], // 二进制运算符应按配置包含在空格中 'binary_operator_spaces' =&gt; [ 'default' =&gt; 'single_space', ], // .连接符两边空格 'concat_space' =&gt; [ 'spacing' =&gt; 'one', ], // 删除多余的空行 'no_extra_blank_lines' =&gt; [ 'tokens' =&gt; ['break', 'case', 'continue', 'curly_brace_block', 'default', 'extra', 'parenthesis_brace_block', 'return', 'square_brace_block', 'switch', 'throw', 'use', 'useTrait', 'use_trait'], ], // 必须以空行开头的语句列表 'blank_line_before_statement' =&gt; [ 'statements' =&gt; [], ], // 类的属性方法必须用一个空行分隔 'class_attributes_separation' =&gt; [ 'elements' =&gt; ['const', 'method', 'property'], ], // 在结束分号之前禁止多行空格或将分号移动到新行 'multiline_whitespace_before_semicolons' =&gt; [ 'strategy' =&gt; 'no_multi_line', ], // 分号后修复空格 'space_after_semicolon' =&gt; [ 'remove_in_empty_for_expressions' =&gt; true, ], // 将双引号转换为简单字符串的单引号 'single_quote' =&gt; [ 'strings_containing_single_quote_chars' =&gt; true, ], // 只有一行实际内容的单行注释和多行注释应使用//语法。 'single_line_comment_style' =&gt; [ 'comment_types' =&gt; ['hash'], ],];return PhpCsFixer\Config::create() -&gt;setRiskyAllowed(true) -&gt;setFinder($finder) -&gt;setRules($rules) -&gt;setCacheFile(__DIR__ . '/runtime/.php_cs.cache');]]></content>
+    <title>php-cs-fixer代码格式化</title>
+    <url>/2019/03/19/php-cs-fixer%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="composer全局安装php-cs-fixer"><a href="#composer全局安装php-cs-fixer" class="headerlink" title="composer全局安装php-cs-fixer"></a>composer全局安装php-cs-fixer</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer global require friendsofphp/php-cs-fixer</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建-php-cs文件"><a href="#新建-php-cs文件" class="headerlink" title="新建.php_cs文件"></a>新建.php_cs文件</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$finder = PhpCsFixer\Finder::create()</span><br><span class="line">    -&gt;in(<span class="keyword">__DIR__</span>)</span><br><span class="line">    -&gt;exclude(<span class="string">'public/static'</span>)</span><br><span class="line">    -&gt;exclude(<span class="string">'public/upload'</span>)</span><br><span class="line">    -&gt;exclude(<span class="string">'vendor'</span>);</span><br><span class="line"></span><br><span class="line">$rules = [</span><br><span class="line">    <span class="string">'@PSR1'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">    <span class="string">'@PSR2'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">    <span class="string">'@PhpCsFixer'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">    <span class="comment">// 数组定义语法短括号</span></span><br><span class="line">    <span class="string">'array_syntax'</span> =&gt; [</span><br><span class="line">        <span class="string">'syntax'</span> =&gt; <span class="string">'short'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 二进制运算符应按配置包含在空格中</span></span><br><span class="line">    <span class="string">'binary_operator_spaces'</span> =&gt; [</span><br><span class="line">        <span class="string">'default'</span> =&gt; <span class="string">'single_space'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// .连接符两边空格</span></span><br><span class="line">    <span class="string">'concat_space'</span> =&gt; [</span><br><span class="line">        <span class="string">'spacing'</span> =&gt; <span class="string">'one'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 删除多余的空行</span></span><br><span class="line">    <span class="string">'no_extra_blank_lines'</span> =&gt; [</span><br><span class="line">        <span class="string">'tokens'</span> =&gt; [<span class="string">'break'</span>, <span class="string">'case'</span>, <span class="string">'continue'</span>, <span class="string">'curly_brace_block'</span>, <span class="string">'default'</span>, <span class="string">'extra'</span>, <span class="string">'parenthesis_brace_block'</span>, <span class="string">'return'</span>, <span class="string">'square_brace_block'</span>, <span class="string">'switch'</span>, <span class="string">'throw'</span>, <span class="string">'use'</span>, <span class="string">'useTrait'</span>, <span class="string">'use_trait'</span>],</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 必须以空行开头的语句列表</span></span><br><span class="line">    <span class="string">'blank_line_before_statement'</span> =&gt; [</span><br><span class="line">        <span class="string">'statements'</span> =&gt; [],</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 类的属性方法必须用一个空行分隔</span></span><br><span class="line">    <span class="string">'class_attributes_separation'</span> =&gt; [</span><br><span class="line">        <span class="string">'elements'</span> =&gt; [<span class="string">'const'</span>, <span class="string">'method'</span>, <span class="string">'property'</span>],</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 在结束分号之前禁止多行空格或将分号移动到新行</span></span><br><span class="line">    <span class="string">'multiline_whitespace_before_semicolons'</span> =&gt; [</span><br><span class="line">        <span class="string">'strategy'</span> =&gt; <span class="string">'no_multi_line'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 分号后修复空格</span></span><br><span class="line">    <span class="string">'space_after_semicolon'</span> =&gt; [</span><br><span class="line">        <span class="string">'remove_in_empty_for_expressions'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 将双引号转换为简单字符串的单引号</span></span><br><span class="line">    <span class="string">'single_quote'</span> =&gt; [</span><br><span class="line">        <span class="string">'strings_containing_single_quote_chars'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 只有一行实际内容的单行注释和多行注释应使用//语法。</span></span><br><span class="line">    <span class="string">'single_line_comment_style'</span> =&gt; [</span><br><span class="line">        <span class="string">'comment_types'</span> =&gt; [<span class="string">'hash'</span>],</span><br><span class="line">    ],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> PhpCsFixer\Config::create()</span><br><span class="line">    -&gt;setRiskyAllowed(<span class="keyword">true</span>)</span><br><span class="line">    -&gt;setFinder($finder)</span><br><span class="line">    -&gt;setRules($rules)</span><br><span class="line">    -&gt;setCacheFile(<span class="keyword">__DIR__</span> . <span class="string">'/runtime/.php_cs.cache'</span>);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>php</category>
       </categories>
@@ -155,9 +251,38 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[常用vi编辑器命令]]></title>
-    <url>%2F2019%2F03%2F19%2F%E5%B8%B8%E7%94%A8vi%E7%BC%96%E8%BE%91%E5%99%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[退出vi及保存文件123456:w filename # 以指定的文件名filename保存:wq # 存盘并退出vi:q! # 不存盘强制退出vi:set nu # 显示行号10G # 转到指定行，例如10G:2,9d # 删除指定行，例如2,9d删除第2到第9行 查找字符 「/关键字」：先按「/」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「n」会往后寻找到您要的关键字为止。 「?关键字」：先按「?」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「n」会往前寻找到您要的关键字为止。 删除 「x」：每按一次，删除光标所在位置的”后面”一个字符。 「#x」：例如，「6x」表示删除光标所在位置的”后面”6个字符。 「X」：大写的X，每按一次，删除光标所在位置的”前面”一个字符。 「#X」：例如，「20X」表示删除光标所在位置的”前面”20个字符。 「dd」：删除光标所在行。 「#dd」：从光标所在行开始删除#行 移动光标 vi可以直接用键盘上的光标来上下左右移动，但正规的vi是用小写英文字母「h」、「j」、「k」、「l」，分别控制光标左、下、上、右移一格 按「ctrl」+「b」：屏幕往”后”移动一页 按「ctrl」+「f」：屏幕往”前”移动一页 按「ctrl」+「u」：屏幕往”后”移动半页 按「ctrl」+「d」：屏幕往”前”移动半页 按数字「0」：移到文章的开头 按「G」：移动到文章的最后 按「$」：移动到光标所在行的”行尾” 按「^」：移动到光标所在行的”行首” 按「w」：光标跳到下个字的开头 按「e」：光标跳到下个字的字尾 按「b」：光标回到上个字的开头 按「#l」：光标移到该行的第#个位置，如：5l,56l]]></content>
+    <title>常用vi编辑器命令</title>
+    <url>/2019/03/19/%E5%B8%B8%E7%94%A8vi%E7%BC%96%E8%BE%91%E5%99%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="退出vi及保存文件"><a href="#退出vi及保存文件" class="headerlink" title="退出vi及保存文件"></a>退出vi及保存文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">:w filename <span class="comment"># 以指定的文件名filename保存</span></span><br><span class="line">:wq         <span class="comment"># 存盘并退出vi</span></span><br><span class="line">:q!         <span class="comment"># 不存盘强制退出vi</span></span><br><span class="line">:<span class="built_in">set</span> nu     <span class="comment"># 显示行号</span></span><br><span class="line">10G         <span class="comment"># 转到指定行，例如10G</span></span><br><span class="line">:2,9d       <span class="comment"># 删除指定行，例如2,9d删除第2到第9行</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查找字符"><a href="#查找字符" class="headerlink" title="查找字符"></a>查找字符</h2><ul>
+<li>「/关键字」：先按「/」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「n」会往后寻找到您要的关键字为止。</li>
+<li>「?关键字」：先按「?」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「n」会往前寻找到您要的关键字为止。</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>「x」：每按一次，删除光标所在位置的”后面”一个字符。</li>
+<li>「#x」：例如，「6x」表示删除光标所在位置的”后面”6个字符。</li>
+<li>「X」：大写的X，每按一次，删除光标所在位置的”前面”一个字符。</li>
+<li>「#X」：例如，「20X」表示删除光标所在位置的”前面”20个字符。</li>
+<li>「dd」：删除光标所在行。</li>
+<li>「#dd」：从光标所在行开始删除#行</li>
+</ul>
+<h2 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h2><ul>
+<li>vi可以直接用键盘上的光标来上下左右移动，但正规的vi是用小写英文字母「h」、「j」、「k」、「l」，分别控制光标左、下、上、右移一格</li>
+<li>按「ctrl」+「b」：屏幕往”后”移动一页</li>
+<li>按「ctrl」+「f」：屏幕往”前”移动一页</li>
+<li>按「ctrl」+「u」：屏幕往”后”移动半页</li>
+<li>按「ctrl」+「d」：屏幕往”前”移动半页</li>
+<li>按数字「0」：移到文章的开头</li>
+<li>按「G」：移动到文章的最后</li>
+<li>按「$」：移动到光标所在行的”行尾”</li>
+<li>按「^」：移动到光标所在行的”行首”</li>
+<li>按「w」：光标跳到下个字的开头</li>
+<li>按「e」：光标跳到下个字的字尾</li>
+<li>按「b」：光标回到上个字的开头</li>
+<li>按「#l」：光标移到该行的第#个位置，如：5l,56l</li>
+</ul>
+]]></content>
       <categories>
         <category>vi编辑器</category>
       </categories>
@@ -167,9 +292,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[设置网站根目录权限]]></title>
-    <url>%2F2019%2F03%2F19%2F%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%2F</url>
-    <content type="text"><![CDATA[权限说明 网站根目录权限遵循 文件644，文件夹755 ，权限用户和用户组www，其余文档777权限是不正常的 如出现文件权限问题时，请执行下面3条命令： 123chown -R www.www /data/wwwroot/find /data/wwwroot/ -type d -exec chmod 755 &#123;&#125; \;find /data/wwwroot/ -type f -exec chmod 644 &#123;&#125; \;]]></content>
+    <title>设置网站根目录权限</title>
+    <url>/2019/03/19/%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<h2 id="权限说明"><a href="#权限说明" class="headerlink" title="权限说明"></a>权限说明</h2><ul>
+<li>网站根目录权限遵循</li>
+<li>文件644，文件夹755 ，权限用户和用户组www，其余文档777权限是不正常的</li>
+<li>如出现文件权限问题时，请执行下面3条命令：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown -R www.www /data/wwwroot/</span><br><span class="line">find /data/wwwroot/ -<span class="built_in">type</span> d -<span class="built_in">exec</span> chmod 755 &#123;&#125; \;</span><br><span class="line">find /data/wwwroot/ -<span class="built_in">type</span> f -<span class="built_in">exec</span> chmod 644 &#123;&#125; \;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -178,9 +308,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[配置MySQL远程连接]]></title>
-    <url>%2F2019%2F03%2F19%2F%E9%85%8D%E7%BD%AEMySQL%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%2F</url>
-    <content type="text"><![CDATA[云主机安全组端口开放3306端口打开iptables 3306端口1234567# centosiptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTservice iptables save # 保存iptables规则# ubuntuiptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTiptables-save &gt; /etc/iptables.up.rules # 保存iptables规则 数据库授权1234567891011# MySQL8.0版本mysql -uroot -pMySQL [(none)]&gt; create user db_user@'%' identified by 'db_pass'; # 创建用户MySQL [(none)]&gt; grant all privileges on db_name.* to db_user@'%' with grant option; # 授权MySQL [(none)]&gt; exit; # 退出数据库控制台，特别注意有分号# 其余MySQL版本mysql -uroot -pMySQL [(none)]&gt; grant all privileges on db_name.* to db_user@'%' identified by 'db_pass'; # 授权MySQL [(none)]&gt; flush privileges;MySQL [(none)]&gt; exit; # 退出数据库控制台，特别注意有分号 撤销授权123mysql -uroot -pMySQL [(none)]&gt; revoke all on *.* from db_user@localhost; # 撤销授权MySQL [(none)]&gt; exit; # 退出数据库控制台，特别注意有分号]]></content>
+    <title>配置MySQL远程连接</title>
+    <url>/2019/03/19/%E9%85%8D%E7%BD%AEMySQL%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h2 id="云主机安全组端口开放3306端口"><a href="#云主机安全组端口开放3306端口" class="headerlink" title="云主机安全组端口开放3306端口"></a>云主机安全组端口开放3306端口</h2><h2 id="打开iptables-3306端口"><a href="#打开iptables-3306端口" class="headerlink" title="打开iptables 3306端口"></a>打开iptables 3306端口</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># centos</span></span><br><span class="line">iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT</span><br><span class="line">service iptables save <span class="comment"># 保存iptables规则</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT</span><br><span class="line">iptables-save &gt; /etc/iptables.up.rules <span class="comment"># 保存iptables规则</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库授权"><a href="#数据库授权" class="headerlink" title="数据库授权"></a>数据库授权</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># MySQL8.0版本</span></span><br><span class="line">mysql -uroot -p</span><br><span class="line">MySQL [(none)]&gt; create user db_user@<span class="string">'%'</span> identified by <span class="string">'db_pass'</span>; <span class="comment"># 创建用户</span></span><br><span class="line">MySQL [(none)]&gt; grant all privileges on db_name.* to db_user@<span class="string">'%'</span> with grant option; <span class="comment"># 授权</span></span><br><span class="line">MySQL [(none)]&gt; <span class="built_in">exit</span>; <span class="comment"># 退出数据库控制台，特别注意有分号</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 其余MySQL版本</span></span><br><span class="line">mysql -uroot -p</span><br><span class="line">MySQL [(none)]&gt; grant all privileges on db_name.* to db_user@<span class="string">'%'</span> identified by <span class="string">'db_pass'</span>; <span class="comment"># 授权</span></span><br><span class="line">MySQL [(none)]&gt; flush privileges;</span><br><span class="line">MySQL [(none)]&gt; <span class="built_in">exit</span>; <span class="comment"># 退出数据库控制台，特别注意有分号</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="撤销授权"><a href="#撤销授权" class="headerlink" title="撤销授权"></a>撤销授权</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">MySQL [(none)]&gt; revoke all on *.* from db_user@localhost; <span class="comment"># 撤销授权</span></span><br><span class="line">MySQL [(none)]&gt; <span class="built_in">exit</span>; <span class="comment"># 退出数据库控制台，特别注意有分号</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>mysql</category>
       </categories>
@@ -189,9 +323,19 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[centos安装gitlab]]></title>
-    <url>%2F2019%2F02%2F15%2Fcentos%E5%AE%89%E8%A3%85gitlab%2F</url>
-    <content type="text"><![CDATA[安装并配置必要的依赖项123456789sudo yum install -y curl policycoreutils-python openssh-serversudo systemctl enable sshdsudo systemctl start sshdsudo firewall-cmd --permanent --add-service=httpsudo systemctl reload firewalld### 安装Postfix以发送通知电子邮件sudo yum install postfixsudo systemctl enable postfixsudo systemctl start postfix 配置yum源123456vim /etc/yum.repos.d/gitlab-ce.repo[gitlab-ce]name=Gitlab CE Repositorybaseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/gpgcheck=0enabled=1 更新本地yum缓存1sudo yum makecache 安装GitLab社区版12sudo yum install -y gitlab-ce # 安装最新版sudo yum install -y gitlab-ce-x.x.x # 安装指定版本 配置域名并启动1234vi /etc/gitlab/gitlab.rb# 修改为自己的域名external_url 'http://192.168.50.233:9090'gitlab-ctl reconfigure GitLab常用命令12345678sudo gitlab-ctl start # 启动所有 gitlab 组件；sudo gitlab-ctl stop # 停止所有 gitlab 组件；sudo gitlab-ctl restart # 重启所有 gitlab 组件；sudo gitlab-ctl status # 查看服务状态；sudo gitlab-ctl reconfigure # 启动服务；sudo vim /etc/gitlab/gitlab.rb # 修改默认的配置文件；gitlab-rake gitlab:check SANITIZE=true --trace # 检查gitlab；sudo gitlab-ctl tail # 查看日志；]]></content>
+    <title>centos安装gitlab</title>
+    <url>/2019/02/15/centos%E5%AE%89%E8%A3%85gitlab/</url>
+    <content><![CDATA[<h2 id="安装并配置必要的依赖项"><a href="#安装并配置必要的依赖项" class="headerlink" title="安装并配置必要的依赖项"></a>安装并配置必要的依赖项</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y curl policycoreutils-python openssh-server</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">sudo systemctl start sshd</span><br><span class="line">sudo firewall-cmd --permanent --add-service=http</span><br><span class="line">sudo systemctl reload firewalld</span><br><span class="line"><span class="comment">### 安装Postfix以发送通知电子邮件</span></span><br><span class="line">sudo yum install postfix</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> postfix</span><br><span class="line">sudo systemctl start postfix</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/yum.repos.d/gitlab-ce.repo</span><br><span class="line">[gitlab-ce]</span><br><span class="line">name=Gitlab CE Repository</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="variable">$releasever</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新本地yum缓存"><a href="#更新本地yum缓存" class="headerlink" title="更新本地yum缓存"></a>更新本地yum缓存</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum makecache</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装GitLab社区版"><a href="#安装GitLab社区版" class="headerlink" title="安装GitLab社区版"></a>安装GitLab社区版</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y gitlab-ce          <span class="comment"># 安装最新版</span></span><br><span class="line">sudo yum install -y gitlab-ce-x.x.x    <span class="comment"># 安装指定版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置域名并启动"><a href="#配置域名并启动" class="headerlink" title="配置域名并启动"></a>配置域名并启动</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/gitlab/gitlab.rb</span><br><span class="line"><span class="comment"># 修改为自己的域名</span></span><br><span class="line">external_url <span class="string">'http://192.168.50.233:9090'</span></span><br><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+<h2 id="GitLab常用命令"><a href="#GitLab常用命令" class="headerlink" title="GitLab常用命令"></a>GitLab常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gitlab-ctl start                             <span class="comment"># 启动所有 gitlab 组件；</span></span><br><span class="line">sudo gitlab-ctl stop                              <span class="comment"># 停止所有 gitlab 组件；</span></span><br><span class="line">sudo gitlab-ctl restart                           <span class="comment"># 重启所有 gitlab 组件；</span></span><br><span class="line">sudo gitlab-ctl status                            <span class="comment"># 查看服务状态；</span></span><br><span class="line">sudo gitlab-ctl reconfigure                       <span class="comment"># 启动服务；</span></span><br><span class="line">sudo vim /etc/gitlab/gitlab.rb                    <span class="comment"># 修改默认的配置文件；</span></span><br><span class="line">gitlab-rake gitlab:check SANITIZE=<span class="literal">true</span> --trace    <span class="comment"># 检查gitlab；</span></span><br><span class="line">sudo gitlab-ctl tail                              <span class="comment"># 查看日志；</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>git</category>
       </categories>
